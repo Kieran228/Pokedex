@@ -14,11 +14,11 @@ window.onload = async function() {
         pokemon.id = i;
         pokemon.innerText = i.toString() + ". " + pokedex[i]["name"].toUpperCase();
         pokemon.classList.add("pokemon-name");
-        pokemon.addEventListener("click", updatePokemon)
+        pokemon.addEventListener("click", updatePokemon);
         document.getElementById("pokemon-list").append(pokemon);
     }
 
-    console.log(pokedex)
+    console.log(pokedex);
 }
 
 async function getPokemon(num) {
@@ -29,7 +29,8 @@ async function getPokemon(num) {
 
     let pokemonName = pokemon["name"];
     let pokemonType = pokemon["types"];
-    let pokemonIMG = pokemon["sprites"]["front_shiny"];
+    // let pokemonIMG = pokemon["sprites"]["front_shiny"];
+    let pokemonIMG = pokemon.sprites.front_shiny;
 
     response = await fetch(pokemon["species"]["url"]);
     let pokemonDescription = await response.json();
@@ -37,8 +38,23 @@ async function getPokemon(num) {
     pokemonDescription = pokemonDescription["flavor_text_entries"][8]["flavor_text"];
 
     pokedex[num] = {"name" : pokemonName, "img" : pokemonIMG, "types" : pokemonType, "description" : pokemonDescription};
-}
+};
 
 function updatePokemon() {
-    document.getElementById("pokemon-img").src = pokedex[this.id]["img"]
-}
+    document.getElementById("pokemon-img").src = pokedex[this.id]["img"];
+
+    let typesDiv = document.getElementById("pokemon-types")
+    while (typesDiv.firstChild) {
+        typesDiv.firstChild.remove();
+    }
+
+    //* update types
+    let types = pokedex[this.id]["types"];
+    for (let i = 0; i < types.length; i++) {
+        let type = document.createElement("span")
+        type.innerText = types[i]["type"]["name"].toUpperCase();
+        type.classList.add("type-box");
+        type.classList.add(types[i]["type"]["name"]) //* adds the background color and font color
+        typesDiv.append(type);
+    }
+};
