@@ -1,5 +1,8 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background: url(../media/pokemon-bg.jpg) no-repeat;
+    background-size: cover;
+
 }
 
 #content-box {
@@ -8,7 +11,9 @@ body {
     border: 10px solid lightgray;
     border-radius: 10px;
 
-    background-color: blue;
+    background: url("../media/pokeball.jpg") no-repeat;
+    background-size: cover;
+    /* background-color: blue; */
 
     display: flex;
 
@@ -19,14 +24,15 @@ body {
 #pokemon-info {
     width: 250px;
     height: 500px;
-    background-color: cyan;
+
+    /* background-color: cyan; */
     text-align: center;
 }
 
 #pokemon-list {
     width: 250px;
     height: 500px;
-    background-color: yellow;
+    /* background-color: yellow; */
     font-size: 18px;
     overflow-y: auto;
 }
@@ -147,4 +153,18 @@ body {
 .poison {
     background-color: darkviolet;
     color: white;
+}
+
+#pokemon-description {
+    width: 230px;
+    height: 100px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 2px;
+    font: 18px;
+    overflow-y: auto;
 }

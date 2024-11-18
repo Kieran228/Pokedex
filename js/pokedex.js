@@ -18,6 +18,8 @@ window.onload = async function() {
         document.getElementById("pokemon-list").append(pokemon);
     }
 
+    document.getElementById("pokemon-description").innerText = pokedex[1]["description"]
+
     console.log(pokedex);
 }
 
@@ -57,4 +59,8 @@ function updatePokemon() {
         type.classList.add(types[i]["type"]["name"]) //* adds the background color and font color
         typesDiv.append(type);
     }
+
+    // update description
+    document.getElementById("pokemon-description").innerText = pokedex[this.id]["description"]
+
 };
